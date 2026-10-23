@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graph Traversal Visualizer – BFS and DFS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <h1>Graph Traversal Visualizer</h1>
+    <p>Breadth-First Search (BFS) and Depth-First Search (DFS), animated step by step.
+       Build your own graph, choose a starting node, and watch how each algorithm explores it.</p>
+  </header>
+
+  <main class="layout">
+
+    <!-- LEFT: controls -->
+    <aside class="panel controls">
+      <h2>1. Build the Graph</h2>
+
+      <label for="nodeName">Node name</label>
+      <div class="row">
+        <input id="nodeName" type="text" maxlength="8" placeholder="e.g. A or 1">
+        <button id="addNodeBtn">Add Node</button>
+      </div>
+
+      <label>Connect two nodes</label>
+      <div class="row">
+        <select id="edgeFrom" aria-label="First node"></select>
+        <select id="edgeTo" aria-label="Second node"></select>
+      </div>
+      <button id="connectBtn" class="full">Connect Nodes</button>
+
+      <label for="deleteNode">Delete a node</label>
+      <div class="row">
+        <select id="deleteNode"></select>
+        <button id="deleteBtn" class="danger">Delete</button>
+      </div>
+
+      <div class="row">
+        <button id="sampleBtn" class="secondary">Load Sample Graph</button>
+        <button id="resetGraphBtn" class="danger">Reset Graph</button>
+      </div>
+
+      <h2>2. Run a Traversal</h2>
+      <label for="startNode">Starting node</label>
+      <select id="startNode"></select>
+
+      <div class="row">
+        <button id="bfsBtn">Run BFS</button>
+        <button id="dfsBtn">Run DFS</button>
+      </div>
+
+      <div class="row">
+        <button id="playBtn" class="secondary">▶ Play</button>
+        <button id="pauseBtn" class="secondary">⏸ Pause</button>
+      </div>
+      <div class="row">
+        <button id="stepBtn" class="secondary">⏭ Step Forward</button>
+        <button id="resetTravBtn" class="secondary">↺ Reset Traversal</button>
+      </div>
+
+      <label for="speed">Animation speed</label>
+      <select id="speed">
+        <option value="1600">Slow</option>
+        <option value="900" selected>Normal</option>
+        <option value="400">Fast</option>
+        <option value="150">Very fast</option>
+      </select>
+    </aside>
+
+    <!-- CENTER: canvas and info -->
+    <section class="main-col">
+      <div id="message" class="message info" role="status">Welcome! Click "Load Sample Graph" to begin, or add your own nodes.</div>
+
+      <div class="panel">
+        <svg id="graphSvg" viewBox="0 0 800 500" role="img" aria-label="Graph drawing area"></svg>
+      </div>
+
+      <div class="panel">
+        <div class="stats">
+          <div><span id="statNodes">0</span><small>Nodes</small></div>
+          <div><span id="statEdges">0</span><small>Edges</small></div>
+          <div><span id="statVisited">0</span><small>Visited</small></div>
+        </div>
+
+        <h3>Current step</h3>
+        <p id="stepText" class="step-text">No traversal running.</p>
+
+        <h3>Traversal order</h3>
+        <div id="orderBox" class="chips"></div>
+
+        <h3 id="containerLabel">Queue / Stack</h3>
+        <div id="containerBox" class="chips"></div>
+      </div>
+
+      <div class="panel">
+        <h3>Legend</h3>
+        <ul class="legend">
+          <li><span class="sw n-unvisited"></span> Unvisited node</li>
+          <li><span class="sw n-queued"></span> Discovered (waiting in queue / on stack)</li>
+          <li><span class="sw n-current"></span> Currently being visited</li>
+          <li><span class="sw n-done"></span> Fully visited (finished)</li>
+          <li><span class="sw e-normal"></span> Normal edge</li>
+          <li><span class="sw e-active"></span> Edge being used right now</li>
+          <li><span class="sw e-tree"></span> Edge already used by traversal</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- BOTTOM: theory -->
+    <section class="panel theory">
+      <div>
+        <h2>Breadth-First Search (BFS)</h2>
+        <p>BFS explores the graph level by level. It visits the start node, then all of its
+           neighbours, then their neighbours, and so on. It uses a <b>queue</b> (First In, First Out).</p>
+      </div>
+      <div>
+        <h2>Depth-First Search (DFS)</h2>
+        <p>DFS goes as deep as possible along one path before backtracking. It uses a
+           <b>stack</b> (Last In, First Out), which is the same idea as recursion.</p>
+      </div>
+      <div class="full-width">
+        <h2>Complexity (V = nodes, E = edges)</h2>
+        <table>
+          <thead><tr><th>Algorithm</th><th>Time</th><th>Space</th><th>Data structure</th></tr></thead>
+          <tbody>
+            <tr><td>BFS</td><td>O(V + E)</td><td>O(V)</td><td>Queue</td></tr>
+            <tr><td>DFS</td><td>O(V + E)</td><td>O(V)</td><td>Stack / recursion</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>College Project – Graph Traversal Visualizer (HTML, CSS, JavaScript)</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
