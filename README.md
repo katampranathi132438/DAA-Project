@@ -4,7 +4,7 @@
 
 Built with **HTML + CSS + vanilla JavaScript only**: no frameworks, no libraries, no backend, no internet needed. It runs completely in the browser.
 
-Submitted by: Katam Pranathi| Roll No: 92400118524 | Subject:DAA | College: Marwadi University
+Submitted by: Katam Pranathi| Roll No: 92400118524| Subject:DAA| College: Marwadi University
 
 ---
 
